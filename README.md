@@ -64,8 +64,6 @@ a brief about.
 ## Use Cases
 
 ### Case 1 : Student Ahmed
-username :Ahmed 
-password :Ahmed 
 
 Ahmed is a student in third year.
 Ahmed wishes to be notified for upcoming events, lectures, exams,
@@ -75,8 +73,7 @@ new events from his feeds. He can also create his own private events to stay
 organized in his studies.
 
 ### Case 2 : Professor Tarig
-username : Tariq 
-password : Tariq
+
 
 Tarig is a professor in ABC University.
 Tarig teaches many batches as well as many courses.
