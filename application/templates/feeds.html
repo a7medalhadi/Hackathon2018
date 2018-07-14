@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends 'profile-base.html' %} {% block body %}
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>ABC University | Feeds</title>
-</head>
+<div class="w3-container w3-center">
 
-<body>
-	<h1>Feeds</h1>
+	<h1 class="w3-center w3-margin-bottom  ">Feeds</h1>
 	<!-- new feed form only displayed for privilaged users -->
 	{% if privilaged %}
 	<form action="" method="post">
@@ -25,50 +18,29 @@
 	</form>
 	{% endif %}
 	<!-- table displaying all feeds created and subscribed to
-		y
-	-->
-	<h3>Feeds</h3>
-	<table>
+			y
+		-->
+	<table class="w3-table-all">
 		{% for feed in feeds %}
 		<tr>
 			<td>{{ feed.name }}</td>
 			<td>
-				<button
-				{% if feed.owner_id == current_user.id %} disabled {% endif %}>
-					Unsubscribe
-				</button>
-			</td>
-		</tr>
-		{% endfor %}
-	</table>
-	<h3>Events</h3>
-	<table>
-		{% for event in events %}
-		<tr>
-			<td>
-				{{ event.title }}
-			</td>
-			<td>
-				{{ event.id }}
-			</td>
-			<td>
-					{{ event.description }}
-			</td>
-			<td>
-					{{ event.start_day }}
-			</td>
-			<td>
-					{{ event.start_month }}
-			</td>
-			<td>
-					{{ event.end_day }}
-			</td>
-			<td>
-					{{ event.end_month }}
-			</td>
-		</tr>
-		{% endfor %}
-	</table>
-</body>
+				<a 
+				href="/{% if current_user.is_subscribed(feed) %}unsubscribe
+				{% else %}subscribe{% endif %}/{{feed.id}}
+				">
+					<button class="w3-button w3-red hover-shadow w3-hover-red" 
+					{% if feed.owner_id==current_user.id %} disabled {% endif %}>
 
-</html>
+						{% if current_user.is_subscribed(feed) %}Unsubscribe
+						{% else %}Subscribe{% endif %}
+					</button>
+				</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+</div>
+
+{% endblock %}

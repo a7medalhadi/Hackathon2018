@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/w3css.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome-4.7.0/css/font-awesome.css" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/w3css.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome-4.7.0/css/font-awesome.css') }}"
+    />
+
+
+
+
+    <style>
+        #sideBar-header {
+
+            background: linear-gradient(141deg, #433245 0%, #c40d3b 75%);
+            color: white;
+            opacity: 0.85;
+        }
+
+        .button-color {
+            background-color: #db1f6a;
+        }
+
+        .button-like {
+            background-color: #db901f;
+        }
+
+        .violet-gradient {
+            background: linear-gradient(141deg, #351636 0%,
+            #850ed5 75%);
+
+        }
+
+
+        .green-gradient {
+            background: linear-gradient(141deg, #11553f 0%,
+            #0fe18d 75%);
+
+        }
+
+
+        .blue-gradient {
+            background: linear-gradient(141deg, #114155 0%,
+            #0fd6e1 75%);
+
+        }
+
+
+        .blue-gradient-button {
+            background: linear-gradient(141deg, #154678 10%,
+            #07cbd5 75%);
+
+        }
+
+
+        .green-gradient-button {
+            background: linear-gradient(141deg, #3e765f 0%,
+            #15f098 75%);
+
+        }
+
+
+
+
+
+        #cards .card:hover {
+            cursor: pointer;
+
+
+        }
+
+
+        .hover-shadow:hover {
+
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+
+
+        .icon-on {
+            color: rgba(25, 109, 204, 0.712)
+        }
+
+        .blue-cool {
+            background-color: #20c0c9
+        }
+
+        #settings,
+        #logout {
+            cursor: pointer;
+        }
+
+        #links>p {
+            cursor: pointer;
+        }
+
+        .event-date {
+            border-right: 2px #dfdfdf solid;
+        }
+
+        #links a {
+            text-decoration: none;
+        }
+    </style>
+
+    <script>  
+
+        function filter() {
+
+            var selected = document.getElementById("select").value;
+            var x = document.getElementsByClassName("post");
+
+            for (var i = 0; i < x.length; i++) {
+
+                x[i].style.display = "block";
+
+            }
+
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].className.search(selected) == -1) {
+                    x[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+        function show_just(general, type) {
+            var x = document.getElementsByClassName(general);
+
+
+            document.getElementById("test").innerHTML = type;
+            for (var i = 0; i < x.length; i++) {
+
+                x[i].style.display = "block";
+
+            }
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].className.search(type) == -1) {
+                    x[i].style.display = "none";
+                }
+            }
+        }
+
+        function toggle(element) {
+
+            var x = document.getElementById(element);
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="show_just('tab' , 'home-tab');">
+
+
+
+    <div class=" w3-padding w3-row" style="max-width: 1600px;margin: 0px auto 0px auto">
+
+        <div id="sideBar" class=" w3-col m2">
+
+            <div id="sideBar-header" class="w3-card-4">
+
+                <br/>
+
+
+                <div id="sideBar-image" class="w3-center">
+
+                    <a href="/user/">
+
+                        <img onclick="" style="width: 50%" src="{{ url_for('static',filename='images/avatar6.png') }}" src="../static/images/avatar6.png"
+                            class="w3-circle">
+
+
+
+                    </a>
+                    <h5>
+                        {{user.username}}
+                        <br/>
+                        <span class="w3-opacity-min">
+                            {{user.type}}
+                        </span>
+                    </h5>
+
+
+                    {% if current_user== user %}
+
+                    <p>
+                        <a style="text-decoration: none" href="{{ url_for('edit_profile')}}">
+                            <span onclick="show_just('tab' , 'settings-tab')" id="settings" onclick="show_" class="w3-large w3-hover-text-black w3-margin-right"
+                                style="color: #ffffff">
+                                <i class="fa fa-gear"></i>
+                            </span>
+                        </a>
+
+                        <a href="/logout">
+                            <span id="logout" class="w3-large w3-hover-text-black" style="color: #ffffff">
+                                <i class="fa fa-power-off"></i>
+                            </span>
+                        </a>
+                    </p>
+                    {% endif %}
+
+                </div>
+
+                <div id="links" class="w3-container w3-white">
+                    <a href="{{ url_for('index')}}">
+                        <p class="icon-on">
+                            <i class="fa fa-home"></i> Home
+                        </p>
+                    </a>
+
+                    <a href="{{ url_for('user_feeds')}}">
+                        <p>
+                            <i class="fa fa-book"></i> My Feeds
+                        </p>
+                    </a>
+                    <p>
+                        <i class="fa fa-bookmark"></i> favorite lessons
+                    </p>
+                    <p>
+                        <i class="fa fa-home"></i> classes
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div id="about-me" class="w3-margin-top">
+                <div class="w3-card-4 w3-container w3-round-large">
+
+                    <h3 class="w3-opacity">
+                        About Me
+                    </h3>
+
+
+                    <hr/> {% if user.about_me %}
+                    <p>
+                        {{user.about_me}}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+
+                <div id="SideBar-body" class="">
+
+
+
+
+                    <div id="my things" class="w3-round-large w3-card-4 w3-margin-top 
+                        " style="width: 100%">
+
+
+
+                        <button class="w3-button  w3-left-align" style="width: 100%">
+                            <i class="fa fa-circle-o-notch w3-margin-right">
+
+                            </i>
+                            My Groups
+                        </button>
+
+
+                        <button onclick="show_just('tab' , 'home-tab');show_just('content','content-events')" class="w3-button w3-left-align" style="width: 100%">
+                            <i class="fa fa-calendar-check-o w3-margin-right">
+
+                            </i>
+                            My Events
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="w3-col m4 w3-container ">
+
+
+
+                {% block body %} {% endblock %}
+    
+    
+            </div>
+    
+
+        <div class="w3-col m2">
+            <div id="classes-content">
+                <div id="card-1" style="cursor: pointer" onclick="toggle('classes')" class=" card w3-bar-item w3-card-4
+                    w3-margin-top">
+
+                    <div class=" hover-shadow  w3-display-container" style="height: 100px;">
+
+                        <div class="">
+                            <h2 class="w3-display-topmiddle">
+                                <i class="fa fa-bookmark " style="color: #ff476c"></i>
+                                12
+                            </h2>
+
+                            <p class="w3-display-topmiddle w3-text-grey">
+                                <br/>
+                                <br/> Classes
+                            </p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div id="classes" class="" style="" class=" w3-display-container  w3-animate-opacity">
+                    <div class="class ">
+                        <div id="class-data" class="violet-gradient  
+                                w3-text-white
+                                  w3-container ">
+
+                            <div style="margin-left: 5%">
+                                <p class="w3-xlarge">
+                                    Math and algebra
+                                </p>
+
+                                <p class="w3-opacity">
+                                    Monday 10:00 - 12:00
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="class ">
+                        <div id="class-data" class="green-gradient w3-padding-32
+                                    w3-text-white
+                                      w3-container ">
+
+                            <div style="margin-left: 5%">
+                                <p class="w3-xlarge">
+                                    Economy
+                                </p>
+
+                                <p class="w3-opacity">
+                                    Sunday 10:00 - 12:00
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="class">
+                        <div id="class-data" class="blue-gradient w3-padding-32
+                                        w3-text-white
+                                          w3-container ">
+
+                            <div style="margin-left: 5%">
+                                <p class="w3-xlarge">
+                                    History
+                                </p>
+
+                                <p class="w3-opacity">
+                                    Thursday 7:00-10:00
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    
+
+
+    </div>
+
+</body>
+
+
+</html>

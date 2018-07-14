@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/w3css.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/w3 blue grey theme.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/w3 metro themes.css" />
+    <lik rel="stylesheet" media="screen" href="https://fontlibrary.org/face/layla-ruqaa" type="text/css" />
+
+    <style>
+        #sideBar-header {
+
+            background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+            color: white;
+            opacity: 0.85;
+        }
+
+        .button-color {
+            background-color: #db1f6a;
+        }
+
+        .button-like {
+            background-color: #db901f;
+        }
+
+        .violet-gradient {
+            background: linear-gradient(141deg, #351636 0%,
+            #850ed5 75%);
+
+        }
+
+
+        .green-gradient {
+            background: linear-gradient(141deg, #11553f 0%,
+            #0fe18d 75%);
+
+        }
+
+
+        .blue-gradient {
+            background: linear-gradient(141deg, #114155 0%,
+            #0fd6e1 75%);
+
+        }
+
+
+        .blue-gradient-button {
+            background: linear-gradient(141deg, #154678 10%,
+            #07cbd5 75%);
+
+        }
+
+
+        .green-gradient-button {
+            background: linear-gradient(141deg, #3e765f 0%,
+            #15f098 75%);
+
+        }
+
+
+
+
+
+        #cards .card:hover {
+            cursor: pointer;
+
+
+        }
+
+
+        .hover-shadow:hover {
+
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+
+
+        .icon-on {
+            color: rgba(25, 109, 204, 0.712)
+        }
+
+        .blue-cool {
+            background-color: #20c0c9
+        }
+
+        #settings,
+        #logout {
+            cursor: pointer;
+        }
+
+        #links>p {
+            cursor: pointer;
+        }
+
+        .event-date
+        {
+            border-right: 2px #dfdfdf solid ;
+        }
+    </style>
+
+    <script>  
+
+        function filter() {
+
+            var selected = document.getElementById("select").value;
+            var x = document.getElementsByClassName("post");
+
+            for (var i = 0; i < x.length; i++) {
+
+                x[i].style.display = "block";
+
+            }
+
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].className.search(selected) == -1) {
+                    x[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+        function show_just(general ,type) {
+            var x = document.getElementsByClassName(general);
+
+
+            document.getElementById("test").innerHTML = type ;
+            for (var i = 0; i < x.length; i++) {
+  
+                x[i].style.display = "block";
+
+            }
+            for (var i = 0; i < x.length; i++) {
+                if (x[i].className.search(type) == -1) {
+                    x[i].style.display = "none";
+                }
+            }
+        }
+ 
+        function toggle(element) {
+
+            var x = document.getElementById(element);
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+
+            }
+        }
+
+        function set_form(index) {
+            var form1 = document.getElementById("basic_information");
+            var form2 = document.getElementById("change_password");
+
+            form1.style.display = "none";
+            form2.style.display = "none";
+
+            if (index == 1) {
+                form1.style.display = "block";
+                form2.style.display = "none";
+
+
+            }
+            else if (index == 2) {
+                form2.style.display = "block";
+                form1.style.display = "none";
+
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="show_just('tab' , 'home-tab');"> 
+
+
+
+<div class=" w3-padding">
+
+    <div id="sideBar" class=" w3-col m3">
+
+        <div id="sideBar-header" class="w3-card-4">
+  
+            <br/>
+
+
+            <div id="sideBar-image" class="w3-center">
+                <img style="width: 50%" src="../static/images/avatar6.png" class="w3-circle">
+
+                <h5>
+                    {{username['username']}}
+                    <br/>
+                    <span class="w3-opacity-min">
+                        {{username}}
+                    </span>
+                </h5>
+
+
+                <p>
+                    <span onclick="show_just('tab' , 'settings-tab')"
+                     id="settings" onclick="show_" class="w3-large w3-hover-text-black w3-margin-right" style="color: #ffffff">
+                        <i class="fa fa-gear"></i>
+                    </span>
+                    <span id="logout" class="w3-large w3-hover-text-black" style="color: #ffffff">
+                        <i class="fa fa-power-off"></i>
+                    </span>
+                </p>
+
+            </div>
+
+            <div id="links" class="w3-container w3-white">
+                <p onclick="show_just('tab' , 'home-tab');"
+                class="icon-on">
+                    <i
+                    class="fa fa-home"></i> Home
+                </p>
+                <p>
+                    <i class="fa fa-book"></i> My lessons
+                </p>
+                <p>
+                    <i class="fa fa-bookmark"></i> favorite lessons
+                </p>
+                <p>
+                    <i class="fa fa-home"></i> classes
+                </p>
+            </div>
+
+        </div>
+        <h1 id="test">
+            Hte
+        </h1>
+
+        <div id="SideBar-body" class="">
+
+
+
+
+            <div id="my things" class="w3-round-large w3-card-4 w3-margin-top 
+                        " style="width: 100%">
+
+
+                <button onclick="show_just('tab' , 'home-tab');show_just('content','content-posts')" class="w3-button  w3-left-align" style="width: 100%">
+                    <i class="fa fa-sticky-note w3-margin-right">
+
+                    </i>
+                    Posts
+                </button>
+
+
+                <button class="w3-button  w3-left-align" style="width: 100%">
+                    <i class="fa fa-circle-o-notch w3-margin-right">
+
+                    </i>
+                    My Groups
+                </button>
+
+
+                <button onclick="show_just('tab' , 'home-tab');show_just('content','content-events')" class="w3-button w3-left-align" style="width: 100%">
+                    <i class="fa fa-calendar-check-o w3-margin-right">
+
+                    </i>
+                    My Events
+                </button>
+
+
+                <button class="w3-button w3-left-align" style="width: 100%">
+                    <i class="fa fa-group w3-margin-right">
+
+                    </i>
+                    My Photos
+                </button>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div id="body" class="w3-col m9">
+
+        <div id="body-header" class="w3-container">
+
+        </div>
+
+        <div id="home" class="tab home-tab  tab_home w3-container">
+
+
+            <div id="cards" onclick="toggle('classes')" class=" w3-row-padding">
+
+
+                <div id="card-1" class="w3-third card w3-col w3-margin-top">
+
+                    <div class="w3-card-4 hover-shadow  w3-display-container" style="height: 100px;">
+
+                        <div class="">
+                            <h2 class="w3-display-topmiddle">
+                                <i class="fa fa-bookmark " style="color: #ff476c"></i>
+                                12
+                            </h2>
+
+                            <p class="w3-display-topmiddle w3-text-grey">
+                                <br/>
+                                <br/> Classes
+                            </p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <div id="card-1" class="w3-third  card w3-col w3-margin-top">
+
+                    <div class="w3-card-4 hover-shadow  w3-display-container " style="height: 100px;">
+
+                        <div class="">
+                            <h2 class="w3-display-topmiddle">
+                                <i style="color:#47c8ff" class="fa fa-book"></i>
+                                12
+                            </h2>
+
+                            <p class="w3-display-topmiddle w3-text-grey">
+                                <br/>
+                                <br/> Lessons
+                            </p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div id="card-1" class="w3-third card w3-col w3-margin-top">
+
+                    <div class="w3-card-4 hover-shadow  w3-display-container" style="height: 100px;">
+
+                        <div class="">
+                            <h2 class="w3-display-topmiddle">
+                                <i class="fa fa-check " style=" color: #4fc92e"></i>
+                                12
+                            </h2>
+
+                            <p class="w3-display-topmiddle w3-text-grey">
+                                <br/>
+                                <br/> Dutteis
+                            </p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div id="classes" class="w3-half" style="display: none"
+             class="w3-container w3-animate-opacity">
+                <div class="class w3-margin-top">
+                    <div id="class-data" class="violet-gradient w3-padding-32
+                    w3-text-white
+                     w3-round-large
+                      w3-container ">
+
+                        <div style="margin-left: 5%">
+                            <h2>
+                                Math and algebra
+                            </h2>
+
+                            <h4 class="w3-opacity">
+                                Monday 10:00 - 12:00
+                            </h4>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="class w3-margin-top">
+                    <div id="class-data" class="green-gradient w3-padding-32
+                        w3-text-white
+                         w3-round-large
+                          w3-container ">
+
+                        <div style="margin-left: 5%">
+                            <h2>
+                                Economy
+                            </h2>
+
+                            <h4 class="w3-opacity">
+                                Sunday 10:00 - 12:00
+                            </h4>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="class w3-margin-top">
+                    <div id="class-data" class="blue-gradient w3-padding-32
+                            w3-text-white
+                             w3-round-large
+                              w3-container ">
+
+                        <div style="margin-left: 5%">
+                            <h2>
+                                History
+                            </h2>
+
+                            <h4 class="w3-opacity">
+                                Thursday 7:00-10:00
+                            </h4>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="events"
+             style="display: none"
+             class="content content-events  w3-margin-top">
+                <div id="event-header" class="w3-container w3-large
+                w3-center">
+
+                    You Have
+                    <b>8</b> events to check .
+                    <hr/>
+                </div>
+                <div id="event">
+                    <div id="event1" class="w3-row-padding">
+                        <div class="  w3-col m3  ">
+
+                            <div class="event-date w3-container ">
+                               <i class="fa fa-calendar w3-opacity"></i> Monday
+                                <br/>
+                                <span class="w3-xxxlarge">
+                                    32
+                                </span>
+                                <br/> October 17
+                                <br/>
+                                <span class="w3-text-grey">
+                                    10:00 - 12:00
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="w3-col m9 w3-container w3-padding">
+                            <h1>
+                                Lecture About Electrical Engineering .
+                            </h1>
+                            <h4 class="w3-text-grey">
+                                <i class=" fa fa-user w3-margin-right"></i>By Dr.Jhon
+                            </h4>
+                            <hr/>
+                            <div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div id="event1" class="w3-row-padding">
+                        <div class="  w3-col m3  ">
+
+                            <div class="event-date w3-container ">
+                               <i class="fa fa-calendar w3-opacity"></i> Monday
+                                <br/>
+                                <span class="w3-xxxlarge">
+                                    32
+                                </span>
+                                <br/> October 17
+                                <br/>
+                                <span class="w3-text-grey">
+                                    10:00 - 12:00
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="w3-col m9 w3-container w3-padding">
+                            <h1>
+                                Lecture About Electrical Engineering .
+                            </h1>
+                            <h4 class="w3-text-grey">
+                                <i class=" fa fa-user w3-margin-right"></i>By Dr.Jhon
+                            </h4>
+                            <hr/>
+                            <div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div id="event1" class="w3-row-padding">
+                        <div class="  w3-col m3  ">
+
+                            <div class="event-date w3-container ">
+                               <i class="fa fa-calendar w3-opacity"></i> Monday
+                                <br/>
+                                <span class="w3-xxxlarge">
+                                    32
+                                </span>
+                                <br/> October 17
+                                <br/>
+                                <span class="w3-text-grey">
+                                    10:00 - 12:00
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="w3-col m9 w3-container w3-padding">
+                            <h1>
+                                Lecture About Electrical Engineering .
+                            </h1>
+                            <h4 class="w3-text-grey">
+                                <i class=" fa fa-user w3-margin-right"></i>By Dr.Jhon
+                            </h4>
+                            <hr/>
+                            <div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div id="event1" class="w3-row-padding">
+                        <div class="  w3-col m3  ">
+
+                            <div class="event-date w3-container ">
+                               <i class="fa fa-calendar w3-opacity"></i> Monday
+                                <br/>
+                                <span class="w3-xxxlarge">
+                                    32
+                                </span>
+                                <br/> October 17
+                                <br/>
+                                <span class="w3-text-grey">
+                                    10:00 - 12:00
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="w3-col m9 w3-container w3-padding">
+                            <h1>
+                                Lecture About Electrical Engineering .
+                            </h1>
+                            <h4 class="w3-text-grey">
+                                <i class=" fa fa-user w3-margin-right"></i>By Dr.Jhon
+                            </h4>
+                            <hr/>
+                            <div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                 
+                    
+                    
+                </div>
+            </div>
+
+            <div id="posts" class="content  content-posts ">
+                <div class="w3-container w3-margin-top">
+                    <select id="select" class="w3-select w3-white w3-quarter">
+                        <option value="">
+                            
+                        </option>
+                        <option value="news">
+                            News
+                        </option>
+
+                        <option value="event">
+                            Event
+                        </option>
+
+                        <option value="disc">
+                            Discussion
+                        </option>
+                    </select>
+
+                    <button onclick="filter()" style="" class="w3-button  
+                                w3-margin-left
+                                ">
+                        <i class=""></i> Filter
+                    </button>
+                </div>
+
+                <div id="post1" class="w3-card-4 w3-round-large w3-margin-top post disc
+                        w3-container">
+                    <br>
+                    <div class="w3-container w3-section">
+                        <img src="../static/images/avatar6.png" class="w3-circle w3-left w3-margin-right" style="width: 20%">
+
+                        <span class="w3-right w3-opacity">time</span>
+
+
+
+                        <h4>Jhon Doe</h4>
+                    </div>
+                    <hr>
+
+                    <p class="w3-right-align w3-text-grey" id="type">
+                        <i class="fa fa-group"></i> disc
+                    </p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+
+                    <div class="w3-row-padding " style="margin:0px -20px">
+                        <div class="w3-half">
+                            <img src="../static/images/kid-hd.jpg" width="100%">
+                        </div>
+                        <div class="w3-half">
+                            <img src="../static/images/kid2.jpg" width="100%">
+                        </div>
+
+                    </div>
+                    <div class="w3-sec w3-margin-top w3-margin-bottom">
+                        <button class="w3-button button-blue">
+                            <i class="fa fa-thumbs-up"></i>
+                            Like
+                        </button>
+
+                        <button class="w3-button w3-theme-d2">
+                            <i class="fa fa-comment"></i>
+                            Comment
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+
+                <div id="post1" class="w3-card-4 w3-round-large w3-margin-top post event
+                            w3-container">
+                    <br>
+                    <div class="w3-container w3-section">
+                        <img src="../static/images/avatar6.png" class="w3-circle w3-left w3-margin-right" style="width: 20%">
+
+                        <span class="w3-right w3-opacity">time</span>
+
+
+
+                        <h4>Jhon Doe</h4>
+                    </div>
+                    <hr>
+
+                    <p class="w3-right-align w3-text-grey" id="type">
+                        <i class="fa fa-envelope"></i> event
+                    </p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+
+                    <div class="w3-row-padding " style="margin:0px -20px">
+                        <div class="w3-half">
+                            <img src="../static/images/kid-hd.jpg" width="100%">
+                        </div>
+                        <div class="w3-half">
+                            <img src="../static/images/kid2.jpg" width="100%">
+                        </div>
+
+                    </div>
+                    <div class="w3-sec w3-margin-top w3-margin-bottom">
+                        <button class="w3-button button-blue">
+                            <i class="fa fa-thumbs-up"></i>
+                            Like
+                        </button>
+
+                        <button class="w3-button w3-theme-d2">
+                            <i class="fa fa-comment"></i>
+                            Comment
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div id="post1" class="w3-card-4 w3-round-large w3-margin-top post news
+                            w3-container">
+                    <br>
+                    <div class="w3-container w3-section">
+                        <img src="../static/images/avatar6.png" class="w3-circle w3-left w3-margin-right" style="width: 20%">
+
+                        <span class="w3-right w3-opacity">time</span>
+
+
+
+                        <h4>Jhon Doe</h4>
+                    </div>
+                    <hr>
+
+                    <p class="w3-right-align w3-text-grey" id="type">
+                        <i class="fa fa-star"></i> news
+                    </p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+
+                    <div class="w3-row-padding " style="margin:0px -20px">
+                        <div class="w3-half">
+                            <img src="../static/images/kid-hd.jpg" width="100%">
+                        </div>
+                        <div class="w3-half">
+                            <img src="../static/images/kid2.jpg" width="100%">
+                        </div>
+
+                    </div>
+                    <div class="w3-sec w3-margin-top w3-margin-bottom">
+                        <button class="w3-button button-blue">
+                            <i class="fa fa-thumbs-up"></i>
+                            Like
+                        </button>
+
+                        <button class="w3-button w3-theme-d2">
+                            <i class="fa fa-comment"></i>
+                            Comment
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="add_event" style="display: none" class="w3-margin-top">
+                <form id="event_form" class="w3-card-2 w3-padding">
+                    <br/>
+                    <b>
+                        Add new event
+                    </b>
+                    <br/>
+                    <br/>
+    
+                    <input type="text" placeholder="Event Title" name="event_title" class="w3-input w3-border">
+                    <br/>
+    
+                    <input type="date" placeholder="Event date" class="w3-input w3-border"
+                     name="event_date" />
+                    <br/>
+                
+                    <textarea class="w3-input w3-border" style="max-width: 100%">
+                        Event details
+                    </textarea>
+                    <br/>
+    
+    
+                    <button onclick="" class="w3-button w3-margin w3-right w3-hover-shadow w3-hover-blue ">
+                        Add event
+                    </button>
+    
+    
+                </form>
+    
+            </div>
+
+        </div>
+
+
+        <div id="setting" class="tab settings-tab  w3-container">
+
+
+            <div class="w3-center">
+                <div class="w3-bar w3-container w3-text-white ">
+
+                    <div onclick="set_form(1)" class="w3-container w3-bar-item w3-large">
+                        <div style="cursor: pointer;" class="w3-text-black w3-card-2 w3-padding w3-round-large ">
+                            <b>
+                                Personal information
+                            </b>
+                        </div>
+                    </div>
+
+                    <div onclick="set_form(2)" style="cursor: pointer;" class="w3-container w3-text-black
+                    w3-bar-item w3-large">
+                        <div class="w3-card-2 w3-padding w3-round-large">
+                            <b>
+                                Password
+                            </b>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <form id="basic_information" class="w3-card-2 w3-padding">
+                <br/>
+                <b>
+                    Basic information
+                </b>
+                <br/>
+                <br/>
+
+                <input type="text" value="mohammedhashim44" name="username" class="w3-input w3-border">
+                <br/>
+
+                <input type="text" value="Mohammed" name="first_name" class="w3-input w3-border">
+                <br/>
+                <input type="text" value="Hashim" name="last_name" class="w3-input w3-border">
+                <br/>
+
+
+                <button onclick="" class="w3-button w3-margin w3-right w3-hover-shadow w3-hover-blue ">
+                    Change
+                </button>
+
+
+            </form>
+
+            <form style="display: none" id="change_password" class="w3-card-2 w3-padding">
+                <br/>
+                <b>
+                    Change Password
+                </b>
+                <br/>
+                <br/>
+
+                <input type="password" required="required" placeholder="Current Password" name="current_password" class="w3-input w3-border">
+                <br/>
+
+
+                <input type="password" placeholder="New Password" name="new_password" class="w3-input w3-border">
+                <br/>
+
+
+                <input type="password" placeholder="Verify Password" name="verify_password" class="w3-input w3-border">
+                <br/>
+
+
+                <button onclick="" class="w3-button w3-margin w3-right w3-hover-shadow w3-hover-blue ">
+                    Change
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+</body>
+
+
+</html>

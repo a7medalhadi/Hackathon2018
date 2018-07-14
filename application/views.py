@@ -17,11 +17,11 @@ login_manager.login_view = 'login'
 @login_manager.user_loader
 def load_user(id):
 	return User.query.get(int(id))
-
+ 
 @app.route('/')
 @app.route('/index/')
 def index():
-	return render_template('index.html')
+	return render_template('index.html' , title="Home")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -34,7 +34,7 @@ def login():
 		login_user(user, remember=form.remember_me.data)
 		next_page = request.args.get('next')
 		if not next_page or url_parse(next_page).netloc != '':
-			next_page = url_for('index')
+			next_page = url_for('profile')
 		return redirect(next_page)
 	return render_template('login.html', title='Sign In', form=form)
 
@@ -46,7 +46,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
-		return redirect(url_for('index'))
+		return redirect(url_for('profile'))
 	form = RegistrationForm()
 	if form.validate_on_submit():
 		user = User(username=form.username.data, email=form.email.data, type='Professor')
@@ -82,7 +82,7 @@ def edit_profile():
 		form.username.data = current_user.username
 		form.about_me.data = current_user.about_me
 	return render_template(
-		'edit_profile.html', title='Edit Profile', form=form)
+		'edit_profile.html', title='Edit Profile', form=form , user=current_user)
 
 @app.route('/subscribe/<feed_id>')
 @login_required
@@ -91,11 +91,11 @@ def subscribe(feed_id):
 	user = User.query.filter_by(id=feed.owner_id).first()
 	if user.id == current_user.id:
 		flash('You are subscribed to your feeds by default')
-		return redirect(url_for('user', user=user))
+		return redirect(url_for('user', username=user.username))
 	current_user.subscribe(feed)
 	db.session.commit()
 	flash('You have subscribed to {} feed'.format(feed.name))
-	return redirect(url_for('user', user=user))
+	return redirect(url_for('user', username=user.username))
 
 @app.route('/unsubscribe/<feed_id>')
 @login_required
@@ -104,13 +104,13 @@ def unsubscribe(feed_id):
 	user = User.query.filter_by(id=feed.owner_id).first()
 	if user.id == current_user.id:
 		flash('You cannot unfollow yourself!')
-		return redirect(url_for('feeds', user=user))
+		return redirect(url_for('feeds', username=user.username))
 	current_user.unsubscribe(feed)
 	db.session.commit()
 	flash('You have unsubscribed from {} feed.'.format(feed.name))
-	return redirect(url_for('feeds', user=user))
+	return redirect(url_for('feeds', username=user.username))
 
-@app.route('/user/<username>/feeds', methods=['GET', 'POST'])
+@app.route('/feeds/<username>/', methods=['GET', 'POST'])
 @login_required
 def feeds(username):
 	privilaged = False # does current user has privilage to create a new feed
@@ -131,7 +131,7 @@ def feeds(username):
 			db.session.commit()
 			flash('Created a new feed')
 			return redirect(url_for('feeds', username=current_user.username))
-	return render_template('feeds.html', form=form, privilaged=privilaged,
+	return render_template('feeds.html',user=current_user, form=form, privilaged=privilaged,
 		user_page=user_page, feeds=subscriptions, events=events)
 
 @app.route('/user/feeds')

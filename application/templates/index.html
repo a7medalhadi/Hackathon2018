@@ -1,15 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>ABC University</title>
-</head>
-<body>
-	<a href="{{ url_for('login') }}">Sign in</a>
-	<a href="{{ url_for('logout') }}">Sign out</a>
-	<a href="{{ url_for('profile') }}">Profile</a>
-	<a href="{{ url_for('register') }}">Register</a>
-</body>
-</html>
+
+{% extends 'home-base.html' %}
+
+
+
+{% block content %}
+
+
+        
+<div id="articles" class="w3-margin w3-card " style="    background: linear-gradient(to right, #ffffff, #d9dadc);">
+
+    <div class="w3-row w3-padding cool-red w3-animate-left">
+
+        <div class="w3-third w3-margin-top  w3-hover-shadow  " style="">
+
+            <img class="  w3-image" src="../static/images/news1.jpg" style="cursor: pointer;">
+
+        </div>
+        <div class="w3-container w3-twothird ">
+            <h2>Aliquam ornare</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue. Sed ut perspiciatis unde omnis iste
+                natus error sit voluptatem accusantium doloremque laudantium.
+            </p>
+            <button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">Continue reading</button>
+        </div>
+    </div>
+
+    <div class="w3-row w3-padding w3-white w3-animate-right">
+
+        <div class="w3-twothird w3-container   " style="">
+
+            <h2>Aliquam ornare</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue. Sed ut perspiciatis unde omnis iste
+                natus error sit voluptatem accusantium doloremque laudantium.
+            </p>
+            <button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">Continue reading</button>
+
+
+        </div>
+
+        <div class="w3-margin-top w3-third w3-hover-shadow">
+
+            <img class="  w3-image" src="../static/images/news2.jpg" style="cursor: pointer;">
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="w3-row cool-blue  w3-padding w3-animate-left">
+
+        <div class="w3-third  w3-hover-shadow w3-margin-top " style="">
+
+            <img class=" w3-image" src="../static/images/news3.jpg" style="cursor: pointer;">
+
+        </div>
+        <div class="w3-container  w3-twothird ">
+            <h2>Aliquam ornare</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dictum facilisis augue. Sed ut perspiciatis unde omnis iste
+                natus error sit voluptatem accusantium doloremque laudantium.
+            </p>
+            <button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">Continue reading</button>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %} 

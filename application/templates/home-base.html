@@ -1,0 +1,331 @@
+<span style="display: none">
+    .
+</span>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>
+        {{title}}
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/w3css.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/w3 blue grey theme.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/w3 metro themes.css" />
+    <style>
+        #nav>a {
+            color: white;
+            text-decoration: none ;
+        }
+
+        #nav>a:hover {
+            color: white;
+            background-color: none;
+            cursor: pointer;
+
+            border-bottom: 3px solid white;
+        }
+
+   
+
+
+
+        input {
+            text-align: right;
+            width: 70%;
+            display: block;
+            border: none;
+            border-bottom: 2px solid #cecccc;
+            margin: 0px auto 0px auto;
+        }
+
+
+
+        #header2 {
+            background-image: url("../static/images/uni.jpg");
+
+            width: 100%;
+            height: 70%;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+
+        }
+
+
+        #button1 {
+            color: #24aeb5;
+            box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+        #button1:hover {
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19) !important;
+            color: #24aeb5 !important;
+            background-color: white !important
+        }
+
+        .cool-blue {
+            background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+        }
+
+
+        .cool-red {
+            background: linear-gradient(141deg, #452828 0%, #c72540 75%);
+            color: white
+        }
+
+
+        .gradient {
+            background: linear-gradient(141deg, rgba(0, 25, 29, 0.7) 0%,
+            rgba(0, 4, 3, 0.7) 75%);
+
+        }
+    </style>
+
+
+    <script>
+
+
+
+        var index = 0;
+        function hideAll() {
+            var x = document.getElementsByClassName("slideShow");
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+
+        }
+
+        function set() {
+
+            hideAll();
+
+            var x = document.getElementsByClassName("slideShow");
+
+
+            if (index < x.length && index >= 0)
+                x[index].style.display = "block";
+        }
+
+
+
+        function next() {
+            hideAll();
+
+            index++;
+
+            var x = document.getElementsByClassName("slideShow");
+
+
+            if (index > x.length - 1)
+                index = 0;
+
+
+            x[index].style.display = "block";
+
+
+
+        }
+
+        function prev() {
+            hideAll();
+            index--;
+            var x = document.getElementsByClassName("slideShow");
+
+            if (index < 0)
+                index = x.length - 1;
+
+            if (index < x.length && index >= 0)
+                x[index].style.display = "block";
+
+        }
+
+        function w3_close() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        function w3_show() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+
+    </script>
+
+
+
+</head>
+
+
+
+<body onload="set()">
+    <div id="main container">
+        <div id="header1" style="" class=" w3-row-padding cool-blue w3-text-white">
+            <div class="w3-col w3-third ">
+                <p class="w3-right">
+                    <span style="margin-right: 5px" class="">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                    Call : +249 xxx xxx xxx
+                    <span class=" w3-opacity">|</span>
+                </p>
+            </div>
+
+            <div class="w3-col w3-third ">
+                <p class="w3-right">
+                    <span style="margin-right: 5px" class="">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    Email : example@com.com
+                    <span class=" w3-opacity w3-rightz">|</span>
+                </p>
+            </div>
+
+            <div class="w3-col w3-third ">
+                <p class="w3-left">
+
+                    Follow Us On :
+                    <span class="w3-margin-right w3-margin-left">
+                        <i class="fa fa-facebook"></i>
+                    </span>
+                    <span class="w3-margin-right">
+                        <i class="fa fa-twitter"></i>
+                    </span>
+                    <span class="w3-margin-right">
+                        <i class="fa fa-youtube-play"></i>
+                    </span>
+                </p>
+            </div>
+
+
+        </div>
+
+        <div id="header2" style="" class="gradient">
+
+            <div style="width: 100% ; height: 100%;" class="gradient 
+            w3-center ">
+
+                <div id="nav" class="w3-bar 
+                 w3-large w3-margin-top
+                    w3-theme-d2">
+
+
+
+
+
+                    <a class=" w3-theme-d4 w3-padding-large
+                       w3-bar-item" href="{{ url_for('index') }}">
+                        Home
+                    </a>
+
+                      
+                    <a href="{{ url_for('profile') }}"
+                    class="w3-bar-item   
+                       w3-padding-large
+                    ">
+                        Profile
+                    </a>
+                    
+                    <a class="w3-bar-item   
+                       w3-padding-large
+                    ">
+                        About
+                    </a>
+
+                    <a class="w3-bar-item  
+                     w3-padding-large">
+                        Events
+                    </a>
+
+
+                    <a class="w3-bar-item  
+                      w3-padding-large">
+                        Contact
+                    </a>
+
+
+                    <a class="w3-bar-item cool-blue  w3-hover-white w3-round-xxlarge
+                       w3-text-white " href="{{ url_for('login') }}"
+                       style="border: 3px solid white;" class="w3-button w3-hover-border-black w3-hover-opacity
+                       w3-round-xxlarge ">
+
+                        <span style="margin-right: 8px">
+                            <i class="fa fa-heart"></i>
+                        </span>Log in
+                    </a>
+
+
+
+
+                </div>
+
+
+                <a
+                 style="margin-top: -230px;opacity: 1.0;
+                color: white" class="w3-display-middle 
+                w3-xxlarge w3-hide-small
+                 w3-theme-d4 w3-padding-large
+                   w3-bar-item">
+                    <img class="" style="height: 150px" 
+                     src="../static/images/header6.png " />
+                </a>
+
+                <div
+                 class="w3-display-middle w3-hide-small
+                  w3-center">
+                    <h1 class="w3-xxlarge">
+                        <b class="w3-text-white">
+                            ABC university for science
+                    </h1>
+                    <p>
+                        Hunders of students find their future
+
+                    </p>
+                    </b>
+
+
+
+
+                    <div class="w3-xlarge w3-bar ">
+
+                        <a href="{{ url_for('register') }}" style="text-decoration: none;color: white">
+                            <div style="border: 3px solid white;" class="w3-button w3-hover-opacity w3-round-xxlarge w3-margin
+                                      w3-bar-item">
+                                <div class="padd">
+                                    Sign up
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="{{ url_for('login') }}" style="text-decoration: none ; color: white">
+                            <div style="border: 3px solid white;" class="w3-button w3-hover-border-black w3-hover-opacity cool-blue
+                               w3-round-xxlarge w3-margin
+                              w3-bar-item">
+                                <div class="">
+                                    <span style="margin-right: 8px">
+                                        <i class="fa fa-heart"></i>
+                                    </span>Log in
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+
+        
+        
+        {% block content %}
+
+        {% endblock %}
+
+
+</body>
+
+
+
+
+
+</html>
