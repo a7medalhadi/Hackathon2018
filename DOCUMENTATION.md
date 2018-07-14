@@ -1,5 +1,11 @@
 # Documentation
 
+## Choice of Platform
+
+we chose to build a web platform inorder to reach a bigger audience of
+college students, professors, and the working staff. It also enables us to
+target mobile phone users through the web browser.
+
 ## Requirements
 
 ### Backend Languages, Frameworks and Plugins
@@ -12,8 +18,6 @@
   - Flask-Migrate
   - Flask-SQLAlchemy
   - Jinja2
-- Linux OS: **not mandatory** but you will have to edit the commands in
-  section *Running The Server* to use your OS commands.
 
 ### Frontend Languages, Frameworks and Libraries
 
@@ -25,12 +29,13 @@
 
 ## Running The Server
 
-1. Error Logging server:
+1. Install all the requirements.
+2. Error Logging server:
   open a terminal and run the following command:
     ```bash
     python3 -m smtpd -n -c DebuggingServer localhost:8025
     ```
-2. Run the server:
+3. Run the server:
   open another terminal and from the project root folder
   (WHEREVER_THE_PROJECT_IS_LOCATED/ABC/) run the following commands:
     ```bash
@@ -41,25 +46,41 @@
     export SQLALCHEMY_DATABASE_URI='/model/database.db'
     flask run
     ```
-3. Open a browser and enter the url: `localhost:5000`
+4. Open a browser and enter the url: `localhost:5000`
 
 ## Main Idea and Concept
 
 We tackled challenge 3 by creating a feeds/events based system.
 
-For students, each has, by default, a single private feed he can edit
-and add events to, students are also able to view professors feeds and
+For students, each has, by default, a single private feed which he can edit
+and add events to it. Students are also able to view professors' feeds and
 subscribe to them as they wish.
 Unlike students, professors can create many public feeds, which students
 can subscribe to.
 
-The feeds are delivered in a calendar form, so that students and professors
-can see all upcoming events (announcements, news, etc) from all feeds
-seemlessly.
+## Use Cases
+
+### Case 1 : Student Ahmed
+
+Ahmed is a student in third year.
+Ahmed wishes to be notified for upcoming events, lectures, exams,
+and announcements. He uses the app to subscribe to professors' feeds that
+he is interested in. Every time in a while, Ahmed checks his calendar for
+new events from his feeds. He can also create his own private events to stay
+organized in his studies.
+
+### Case 2 : Professor Tarig
+
+Tarig is a professor in ABC University.
+Tarig teaches many batches as well as many courses.
+Using our app, Tarig can create feeds that his students can subscribe to.
+He can then create events and push it to a specific feed. All his feed
+subscribers will recieve the event update emmidiately.
 
 ## Future Work
 
-- private messages
-- public and private feeds
-- forums
-- chatting
+- Events categories or priorites
+- Private messages
+- Public and private feeds
+- Forums
+- Chatting
